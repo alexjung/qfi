@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.1.0)
 project(qfi)
 
-option(BuildExample "Option to enable/disable building of example binary" ON)
+option(BuildQfiExample "Option to enable/disable building of example binary" ON)
 
 set(CMAKE_BINARY_DIR ${CMAKE_BINARY_DIR})
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
@@ -59,7 +59,7 @@ add_library(qfi STATIC ${QFI_SRCS} ${PROJECT_SOURCE_DIR}/qfi.qrc)
 target_include_directories(qfi PRIVATE ${PROJECT_SOURCE_DIR})
 target_link_libraries(qfi Qt5::Widgets Qt5::Svg)
 
-if(BuildExample)
+if(BuildQfiExample)
 
     set(EXAMPLE_SRCS
         ${PROJECT_SOURCE_DIR}/example/LayoutSquare.cpp
