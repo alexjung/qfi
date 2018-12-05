@@ -37,31 +37,6 @@ if(NOT Qt5Widgets_FOUND)
     message(FATAL_ERROR "Qt5Widgets not found")
 endif()
 
-find_package(Qt5Core)
-if(NOT Qt5Core_FOUND)
-    message(FATAL_ERROR "Qt5Core not found")
-endif()
-
-find_package(Qt5Gui)
-if(NOT Qt5Gui_FOUND)
-    message(FATAL_ERROR "Qt5Gui not found")
-endif()
-
-find_package(Qt5Qml)
-if(NOT Qt5Qml_FOUND)
-    message(FATAL_ERROR "Qt5Qml not found")
-endif()
-
-find_package(Qt5Quick)
-if(NOT Qt5Quick_FOUND)
-    message(FATAL_ERROR "Qt5Quick not found")
-endif()
-
-find_package(Qt5QuickWidgets)
-if(NOT Qt5QuickWidgets_FOUND)
-    message(FATAL_ERROR "Qt5QuickWidgets not found")
-endif()
-
 find_package(Qt5Svg)
 if(NOT Qt5Svg_FOUND)
     message(FATAL_ERROR "Qt5Svg not found")
@@ -80,7 +55,7 @@ set(QFI_SRCS
 
 add_library(qfi STATIC ${QFI_SRCS} ${PROJECT_SOURCE_DIR}/qfi.qrc)
 target_include_directories(qfi PRIVATE ${PROJECT_SOURCE_DIR})
-target_link_libraries(qfi Qt5::Widgets Qt5::Qml Qt5::Quick Qt5::QuickWidgets Qt5::Svg)
+target_link_libraries(qfi Qt5::Widgets Qt5::Svg)
 
 set(EXAMPLE_SRCS
     ${PROJECT_SOURCE_DIR}/example/LayoutSquare.cpp

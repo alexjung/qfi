@@ -11,6 +11,12 @@ This package allows you to create nice looking instruments (and a panel or clust
 ![](qfiexample_01.jpg)
 
 # Compilation
+Assuming that you have installed `Qt` on your system set the following variable (either every time you want to compile the project or in your `.bashrc/.zshrc`):
+```bash
+export QT5_CMAKE_DIR="/PATH_TO_INSTALLATION/Qt/5.11.2/gcc_64/lib/cmake"
+```
+If you have a different version installed on your system, change the path accordingly.
+
 In order to compile the project go into a terminal and execute the following:
 ```bash
 cd build
