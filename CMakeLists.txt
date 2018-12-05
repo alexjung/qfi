@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.1.0)
 project(qfi)
 
+option(BuildExample "Option to enable/disable building of example binary" ON)
+
 set(CMAKE_BINARY_DIR ${CMAKE_BINARY_DIR})
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR})
@@ -57,31 +59,35 @@ add_library(qfi STATIC ${QFI_SRCS} ${PROJECT_SOURCE_DIR}/qfi.qrc)
 target_include_directories(qfi PRIVATE ${PROJECT_SOURCE_DIR})
 target_link_libraries(qfi Qt5::Widgets Qt5::Svg)
 
-set(EXAMPLE_SRCS
-    ${PROJECT_SOURCE_DIR}/example/LayoutSquare.cpp
+if(BuildExample)
 
-    ${PROJECT_SOURCE_DIR}/example/MainWindow.ui
-    ${PROJECT_SOURCE_DIR}/example/MainWindow.cpp
-    ${PROJECT_SOURCE_DIR}/example/WidgetADI.ui
-    ${PROJECT_SOURCE_DIR}/example/WidgetADI.cpp
-    ${PROJECT_SOURCE_DIR}/example/WidgetALT.ui
-    ${PROJECT_SOURCE_DIR}/example/WidgetALT.cpp
-    ${PROJECT_SOURCE_DIR}/example/WidgetASI.ui
-    ${PROJECT_SOURCE_DIR}/example/WidgetASI.cpp
-    ${PROJECT_SOURCE_DIR}/example/WidgetHSI.ui
-    ${PROJECT_SOURCE_DIR}/example/WidgetHSI.cpp
-    ${PROJECT_SOURCE_DIR}/example/WidgetNAV.ui
-    ${PROJECT_SOURCE_DIR}/example/WidgetNAV.cpp
-    ${PROJECT_SOURCE_DIR}/example/WidgetPFD.ui
-    ${PROJECT_SOURCE_DIR}/example/WidgetPFD.cpp
-    ${PROJECT_SOURCE_DIR}/example/WidgetSix.ui
-    ${PROJECT_SOURCE_DIR}/example/WidgetSix.cpp
-    ${PROJECT_SOURCE_DIR}/example/WidgetTC.ui
-    ${PROJECT_SOURCE_DIR}/example/WidgetTC.cpp
-    ${PROJECT_SOURCE_DIR}/example/WidgetVSI.ui
-    ${PROJECT_SOURCE_DIR}/example/WidgetVSI.cpp
-    )
+    set(EXAMPLE_SRCS
+        ${PROJECT_SOURCE_DIR}/example/LayoutSquare.cpp
 
-add_executable(example ${PROJECT_SOURCE_DIR}/example/main.cpp ${EXAMPLE_SRCS})
-target_include_directories(example PRIVATE ${PROJECT_SOURCE_DIR} ${PROJECT_SOURCE_DIR}/example)
-target_link_libraries(example qfi)
+        ${PROJECT_SOURCE_DIR}/example/MainWindow.ui
+        ${PROJECT_SOURCE_DIR}/example/MainWindow.cpp
+        ${PROJECT_SOURCE_DIR}/example/WidgetADI.ui
+        ${PROJECT_SOURCE_DIR}/example/WidgetADI.cpp
+        ${PROJECT_SOURCE_DIR}/example/WidgetALT.ui
+        ${PROJECT_SOURCE_DIR}/example/WidgetALT.cpp
+        ${PROJECT_SOURCE_DIR}/example/WidgetASI.ui
+        ${PROJECT_SOURCE_DIR}/example/WidgetASI.cpp
+        ${PROJECT_SOURCE_DIR}/example/WidgetHSI.ui
+        ${PROJECT_SOURCE_DIR}/example/WidgetHSI.cpp
+        ${PROJECT_SOURCE_DIR}/example/WidgetNAV.ui
+        ${PROJECT_SOURCE_DIR}/example/WidgetNAV.cpp
+        ${PROJECT_SOURCE_DIR}/example/WidgetPFD.ui
+        ${PROJECT_SOURCE_DIR}/example/WidgetPFD.cpp
+        ${PROJECT_SOURCE_DIR}/example/WidgetSix.ui
+        ${PROJECT_SOURCE_DIR}/example/WidgetSix.cpp
+        ${PROJECT_SOURCE_DIR}/example/WidgetTC.ui
+        ${PROJECT_SOURCE_DIR}/example/WidgetTC.cpp
+        ${PROJECT_SOURCE_DIR}/example/WidgetVSI.ui
+        ${PROJECT_SOURCE_DIR}/example/WidgetVSI.cpp
+        )
+
+    add_executable(example ${PROJECT_SOURCE_DIR}/example/main.cpp ${EXAMPLE_SRCS})
+    target_include_directories(example PRIVATE ${PROJECT_SOURCE_DIR} ${PROJECT_SOURCE_DIR}/example)
+    target_link_libraries(example qfi)
+
+endif()
