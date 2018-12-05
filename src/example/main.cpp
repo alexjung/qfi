@@ -51,6 +51,8 @@
 
 int main(int argc, char *argv[])
 {
+    Q_INIT_RESOURCE(qfi);
+
     QApplication app(argc, argv);
     MainWindow win;
 
