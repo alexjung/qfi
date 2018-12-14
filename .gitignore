@@ -10,6 +10,7 @@ ui_*.*
 moc_*.*
 src/Makefile
 *.pro.user
+*.user
 
 # library files
 libqfi*.*
