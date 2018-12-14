@@ -9,7 +9,7 @@ set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 if(DEFINED ENV{CC})
-    set(CMAKE_C_COMPILER $ENV{C})
+    set(CMAKE_C_COMPILER $ENV{CC})
 endif()
 
 if(DEFINED ENV{CXX})
@@ -34,15 +34,7 @@ endif()
 message(STATUS "QT5_CMAKE_DIR=" $ENV{QT5_CMAKE_DIR})
 set(CMAKE_PREFIX_PATH $ENV{QT5_CMAKE_DIR})
 
-find_package(Qt5Widgets)
-if(NOT Qt5Widgets_FOUND)
-    message(FATAL_ERROR "Qt5Widgets not found")
-endif()
-
-find_package(Qt5Svg)
-if(NOT Qt5Svg_FOUND)
-    message(FATAL_ERROR "Qt5Svg not found")
-endif()
+find_package(Qt5 COMPONENTS Widgets Svg REQUIRED)
 
 set(QFI_SRCS
     ${PROJECT_SOURCE_DIR}/Adi.cpp
